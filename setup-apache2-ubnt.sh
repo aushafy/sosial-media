@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# HOW TO RUN THIS SCRIPT! $ ./setup-apache2-ubnt.sh 192.168.2.9 1234567890
+
 # store database ip address configuration as variable
 DB_HOST=$1
+DB_PASSWORD=$2
 
 # do update & then install httpd server, git, and mysql client
 sudo apt-get update -y && sudo apt-get install apache2 git mariadb-client php php-mysql -y
@@ -33,5 +36,8 @@ checkPassingArguments
 # delete default apache2 index.html
 sudo rm /var/www/html/index.html
 
-# restart httpd daemon
+# Dump database dependecy
+sudo mysql -h ${DB_HOST} -u devopscilsy -p${DB_PASSWORD} dbsosmed < /var/www/html/dump.sql
+
+# restart httpd daemon 
 sudo systemctl enable apache2 && sudo systemctl restart apache2
