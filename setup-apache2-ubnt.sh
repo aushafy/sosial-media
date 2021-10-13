@@ -4,7 +4,7 @@
 DB_HOST=$1
 
 # do update & then install httpd server, git, and mysql client
-sudo apt-get update -y && sudo apt-get install apache2 git mariadb-client -y
+sudo apt-get update -y && sudo apt-get install apache2 git mariadb-client php php-mysql -y
 
 # do git clone apps from source code
 sudo git clone https://github.com/sdcilsy/sosial-media.git
@@ -29,6 +29,9 @@ function checkPassingArguments() {
 
 # run function
 checkPassingArguments
+
+# delete default apache2 index.html
+sudo rm /var/www/html/index.html
 
 # restart httpd daemon
 sudo systemctl enable apache2 && sudo systemctl restart apache2
