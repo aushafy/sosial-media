@@ -4,7 +4,7 @@
 DB_HOST=$1
 
 # do update & then install httpd server, git, and mysql client
-sudo yum update -y && sudo yum install httpd git mariadb -y
+sudo apt-get update -y && sudo apt-get install apache2 git mariadb-client -y
 
 # do git clone apps from source code
 sudo git clone https://github.com/sdcilsy/sosial-media.git
@@ -31,4 +31,4 @@ function checkPassingArguments() {
 checkPassingArguments
 
 # restart httpd daemon
-sudo systemctl enable httpd && sudo systemctl restart httpd
+sudo systemctl enable apache2 && sudo systemctl restart apache2
