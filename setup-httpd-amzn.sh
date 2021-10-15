@@ -30,5 +30,11 @@ function checkPassingArguments() {
 # run function
 checkPassingArguments
 
+# delete default apache2 index.html
+sudo rm /var/www/html/index.html
+
+# Dump database dependecy
+sudo mysql -h ${DB_HOST} -u devopscilsy -p${DB_PASSWORD} dbsosmed < /var/www/html/dump.sql
+
 # restart httpd daemon
 sudo systemctl enable httpd && sudo systemctl restart httpd
