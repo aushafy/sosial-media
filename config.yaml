@@ -1,0 +1,5 @@
+git_url: "https://github.com/sdcilsy/sosial-media.git"
+db_host: ""
+db_user: "devopscilsy"
+db_pass: 1234567890
+db_name: "dbsosmed"
