@@ -19,9 +19,9 @@ def distro_check(distro_name):
 
 def setup_sosialmedia(GIT_URL, DB_HOST, DB_USER, DB_PASS, DB_NAME):
     print("Installation in progress...")
-    os.system("sudo apt-get update -y && sudo apt-get install apache2 git mariadb-client php php-mysql -y")
-    os.system("sudo git clone {GIT_URL}")
-    os.system("sudo mv sosial-media/* /var/www/html")
+    os.system("sudo apt-get update -y && sudo apt-get install apache2 mariadb-client php php-mysql -y")
+    # os.system("sudo git clone {GIT_URL}")
+    os.system("sudo mv ./* /var/www/html")
     os.system("sudo sed -i 's/localhost/{DB_HOST}/' /var/www/html/config.php")
     os.system("sudo rm /var/www/html/index.html")
     os.system("sudo mysql -h {DB_HOST} -u {DB_USER} -p{DB_PASS} {DB_NAME} < /var/www/html/dump.sql")
